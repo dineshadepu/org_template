@@ -1,0 +1,4 @@
+// Hi all, I know we can create new document class by using the following syntax (add-to-list 'org-latex-classes '("phd" "\\documentclass[twoside]{iitbreport}" ("\\chapter{%s}" . "\\chapter*{%s}") ("\\section{%s}" . "\\section*{%s}") ("\\subsection{%s}" . "\\subsection*{%s}") ("\\subsubsection{%s}" . "\\subsubsection*{%s}") ("\\paragraph{%s}" . "\\paragraph*{%s}") ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))) I am creating many custom templates for different journals. So I can't be sure if the user has defined the specific class in his `.emacs` or `init.el` file. So I am trying to create stand alone org files, where people write with out worrying about the setup. (Well there should be minimal setup in init.el). How can I declare the document class definition in stand alone org file?
+fn main() {
+    println!("Hello, world!");
+}
