@@ -1,0 +1,360 @@
+#+startup: hideblocks
+#+startup: overview
+#+LaTeX_CLASS: phd
+#+OPTIONS: author:nil date:nil title:nil toc:nil
+
+#+LaTeX_HEADER: \usepackage{booktabs}
+#+LaTeX_HEADER: \graphicspath{{expt/}}
+
+# ---------------------------
+
+#+LaTeX_HEADER: \newcommand{\Rey}{\ensuremath{\mathrm{Re}}}
+#+LaTeX_HEADER: \newcommand{\avg}[1]{\ensuremath{\overline{#1}}}
+#+LaTeX_HEADER: \newcommand{\tenpow}[1]{\ensuremath{\times 10^{#1}}}
+#+LaTeX_HEADER: \newcommand{\pder}[2]{\ensuremath{\frac{\partial#1}{\partial#2}}}
+#+LaTeX_HEADER: \newcommand{\Eqref}[1]{Equation~\eqref{#1}}
+#+LaTeX_HEADER: \newcommand{\Tabref}[1]{Table~\ref{#1}}
+#+LaTeX_HEADER: \newcommand{\Figref}[1]{Figure~\ref{#1}}
+#+LaTeX_HEADER: \newcommand{\Appref}[1]{Appendix~\ref{#1}}
+
+
+# --------------------------------------------
+# --------------------------------------------
+# Edit the file name and report type etc.
+#+BEGIN_EXPORT latex
+%%********************************Frontmatter***********************
+% In frontmatter everything comes with roman numbering
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+%*******************************************************************
+%                         Title Page
+%*******************************************************************
+\title{Essential \LaTeX\ Templates for Report Writing}
+\author{My name}
+
+%% Print the date. Today's date comes by default, change it here to
+%% other date format, if required:
+
+%\date{\today}
+%\date{10 Mar 2016}
+
+
+%% The type of the report can be set here
+
+\reporttype{A Seminar Report}
+%\reporttype{A Thesis}
+%\reporttype{A Dissertation}
+%\reporttype{A Project Report}
+
+%% Name of the degree
+\degree{Doctor of Philosophy}
+%\degree{Master of Technology}
+
+
+%% Department/Centre Name
+\dept{Department of Chemical Engineering}
+
+%% Supervisor and cosupervisor/excosupervisor are not essential parts
+%% of a report title page, as it is your report!
+
+%% But if you **have** to put it uncomment these
+%\supervisor{Supervisor name}
+%\cosupervisor{Co-super name}
+%\excosupervisor{External Supervisor}
+
+%% Roll number
+\rollnum{Roll No. ....}
+
+\maketitle
+
+%*******************************************************************
+%                         Copyright Page
+%*******************************************************************
+%\mycopyright
+
+%*******************************************************************
+%                         Dedication Page
+%*******************************************************************
+\dedication[Dedicated to \ldots]
+%\addintoc{Dedication}
+
+%*******************************************************************
+%                        Certificate Page
+%*******************************************************************
+%\makecertificate[change title name]{report type}
+\makecertificate{seminar report}
+%\makecertificate{thesis}
+%\makecertificate{dissertation}
+%\makecertificate{project report}
+
+%\addintoc{Certificate}
+
+%*******************************************************************
+%                         Approval Sheet
+%*******************************************************************
+%\makeapproval{thesis}
+%\makeapproval{dissertation}
+
+%*******************************************************************
+%                          Declaration
+%*******************************************************************
+%==================================dec.tex================================
+%
+\begin{Declaration}
+\noindent
+I declare that this written submission represents my ideas in my own words and where others' ideas or words have been included, I have adequately cited and referenced the original sources. I declare that I have properly and accurately acknowledged all sources used in the production of this report. I also declare that I have adhered to all principles of academic honesty and integrity and have not misrepresented or fabricated or falsified any idea/data/fact/source in my submission. I understand that any violation of the above will be a cause for disciplinary action by the Institute and can also evoke penal action from the sources which have thus not been properly cited or from whom proper permission has not been taken when needed.
+
+%
+%
+%
+%
+%
+%
+%
+
+\DecSign[\today]
+
+
+
+%
+\end{Declaration}
+%========================================================================
+% \include{dec}
+%\addintoc{Declaration}
+
+%******************************************************************
+%                          Abstract
+%******************************************************************
+%============================= abs.tex================================
+\begin{Abstract}
+This document contains essential templates required to write technical
+reports using \LaTeX.  Particularly it shows how to create an
+equation, figure, table, symbols list, and bibliographic citation in a \LaTeX\
+document.
+%
+%
+%
+%
+%
+\end{Abstract}
+%=======================================================================
+% \include{abs}
+
+%******************************************************************
+%                         Contents list
+%******************************************************************
+%\figurespagefalse
+%\tablespagefalse
+\makecontents % Creats toc, lof, and lot
+
+%******************************************************************
+%                        Notations
+%******************************************************************
+\notations[4cm]{List of Symbols}
+
+%%********************************Mainmatter***********************
+% In mainmatter everything comes with arabic numbering
+\cleardoublepage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+#+END_EXPORT
+# --------------------------------------------
+# --------------------------------------------
+
+
+# --------------------------------------------
+# --------------------------------------------
+# Write chapters here
+* Rigid body dynamics
+** Coordinate transformation
+  It is wonderfully written in cite:goldstein2011classical.
+  A rigid body can be described by six degrees of freedom (DOF). Three DOF are
+  to specify the position of some reference point and other three are to define
+  orientation of the axis w.r.t global axis. The position of the rigid body can
+  be easily specified by three coordinates but how would we specify the
+  orientation of the body. One way is to use direction cosines. Consider a
+  global axis x, y, z and body axis x', y', z' as in figure .
+
+  The direction cosines are defined as
+
+  \begin{equation}
+  \begin{aligned}
+  {\cos \theta _ {11 } } & {= \cos \left( \mathbf {i } ^ {\prime } \cdot \mathbf {i } \right) = \mathbf {i } ^ {\prime } \cdot \mathbf {i } = \mathbf {i } \cdot \mathbf {i } ^ {\prime } }
+  \\ {\cos \theta _ {12 } } & {= \cos \left( \mathbf {i } ^ {\prime } \cdot \mathbf {j } \right) = \mathbf {i } \cdot \mathbf {j } = \mathbf {j } \cdot \mathbf {i } ^ {\prime } } \\ {\cos \theta _ {21 } } & {= \cos \left( \mathbf {j } ^ {\prime } \cdot \mathbf {i } \right) = \mathbf {j } \cdot \mathbf {i } = \mathbf {i } \cdot \mathbf {j } ^ {\prime } } \\ {\cos \theta _ {22 } } & {= \cos \left( \mathbf {j } ^ {\prime } \cdot \mathbf {j } \right) = \mathbf {j } ^ {\prime } \cdot \mathbf {j } = \mathbf {j } \cdot \mathbf {j } ^ {\prime } }
+  \end{aligned}
+  \end{equation}
+
+  These direction cosine are used to define the unit vectors in primed frame in
+  terms of the unprimed system.
+
+  \begin{equation}
+  \label{eq:2}
+  \begin{aligned} \mathbf{i}^{\prime} &=\cos \theta_{11} \mathbf{i} + \cos \theta_{12} \mathbf{j} + \cos \theta_{13} \mathbf{k} \\ \mathbf{j}^{\prime} &=\cos \theta_{21} \mathbf{i} + \cos \theta_{22} \mathbf{j} + \cos \theta_{23} \mathbf{k} \\ \mathbf{k}^{\prime} &=\cos \theta_{31} \mathbf{i} + \cos \theta_{32} \mathbf{j} + \cos \theta_{33} \mathbf{k}
+  \end{aligned}
+  \end{equation}
+
+  Now given a vector we have the following relationship,
+
+  \begin{equation}
+  \label{eq:3}
+  \mathbf{r}=x \mathbf{i} + y \mathbf{j} + z \mathbf{k}=x^{\prime} \mathbf{i}^{\prime} + y^{\prime} \mathbf{j}^{\prime} + z^{\prime} \mathbf{k}^{\prime}
+  \end{equation}
+
+  from which we can define the components of vector in primed system relating
+  the unprimed system by
+
+  \begin{equation}
+  \label{eq:4}
+  \begin{array} {r l} {x^{\prime}} & {= \left(\mathbf{r} \cdot \mathbf{i}^{\prime} \right)=\cos \theta_{11} x + \cos \theta_{12} y + \cos \theta_{13} z} \\ {y^{\prime}} & {= \left(\mathbf{r} \cdot \mathbf{j}^{\prime} \right)=\cos \theta_{21} x + \cos \theta_{22} y + \cos \theta_{23} z} \\ {z^{\prime}} & {= \left(\mathbf{r} \cdot \mathbf{k}^{\prime} \right)=\cos \theta_{31} x + \cos \theta_{32} y + \cos \theta_{33} z} \end{array}
+  \end{equation}
+
+  This can be generalized to any vector, say we have a vector $\bold{G}$, then
+  the components of that vector along x' axis will be related to x-, y-, z-
+  components by
+  \begin{equation}
+  \label{eq:5}
+  G_{x^{\prime}}=\mathbf{G} \cdot \mathbf{i}^{\prime}=\cos \theta_{11} G_{x} + \cos \theta_{12} G_{y} + \cos \theta_{13} G_{z}
+  \end{equation}
+
+  If the primed axis is taken as body axes then the nine direction cosines will
+  be functions of time as the body changes its orientation in the course of
+  motion. Remember that we said to describe the rigid body in space we need 6
+  DOF, but we have got additional 6 direction cosines. This is actually not true
+  since the direction cosines are dependent and those 9 values can only be
+  represented by 3. There are several ways to get those three values, but here
+  we mainly concern with Euler angle representation.
+
+** Orthogonal transformation
+   Here on we use Einstein convention. The coordinate axes are named as follows
+   for ease
+   \begin{equation}
+   \label{eq:6}
+   \begin{array} { l } { x \rightarrow x _ { 1 } } \\ { y \rightarrow x _ { 2 } } \\ { z \rightarrow x _ { 3 } } \end{array}
+   \end{equation}
+
+   \noindent
+   Which makes the representation of vector in primed axes as
+
+   \begin{equation}
+   x'_{i} = a_{ij} x_j
+   \end{equation}
+
+   \noindent
+   The magnitude of the vector has to be the same in both the reference frames,
+   that implies
+
+   \begin{equation*}
+   x'_{i}x'_{i} = x_{i}x_{i}
+   \end{equation*}
+
+   \noindent
+   The left hand side of the equation can be written in terms of right hand
+   terms using direction cosines.
+
+   $$ a_{ij}a_{ik}x_{j} x_{k} $$
+
+   \noindent
+   It will reduce to right hand side only if
+   \begin{equation*}
+   \label{eq:7}
+      \begin{array} { r l } { a _ { i j } a _ { i k } } & { = 1 \quad j = k } \\ { } & { = 0 \quad j \neq k } \end{array}
+   \end{equation*}
+
+   \noindent
+   Or more in compact form
+
+   \begin{equation*}
+   \label{eq:7}
+	a _ { i j } a _ { i k } = \delta _ { j k } , \quad j , k = 1.2,3
+   \end{equation*}
+
+   \noindent
+   So any linear transformation that has the properties required as in above
+   equation is called an orthogonal transformation. Thus the transition from
+   coordinates fixed in space to coordinates fixed in the rigid body is
+   accomplished by means of orthogonal transformation. The array of
+   transformation is
+
+   \begin{equation*}
+   \label{eq:7}
+	\left[ \begin{array} { l l l } { a _ { 11 } } & { a _ { 12 } } & { a _ { 13 } } \\ { a _ { 21 } } & { a _ { 22 } } & { a _ { 23 } } \\ { a _ { 31 } } & { a _ { 32 } } & { a _ { 33 } } \end{array} \right]
+   \end{equation*}
+
+   \noindent
+   Symbolically the transition from global to local space can be written as
+
+
+   \begin{equation*}
+   \label{eq:7}
+	\mathbf{r}' = \mathbf{A}\mathbf{r}
+   \end{equation*}
+
+** Using Quaternions
+   Please refer  cite:kuipers1999quaternions.
+
+
+
+
+#+BEGIN_EXPORT latex
+%****************************************************************
+%                         Appendices
+%****************************************************************
+%% Additional, supporting material, such as codes, derivations, etc., can be placed in the appendix
+\appendix
+\chapter{Supporting Material}
+#+END_EXPORT
+
+bibliographystyle:iitbauthyr
+bibliography:mylit.bib
+
+#+BEGIN_EXPORT latex
+%*******************************************************************
+%                         List of publications
+%******************************************************************
+%%%
+\listofpublications
+
+
+\noindent Put your publications from the thesis here. The packages \texttt{multibib} or \texttt{bibtopic} or \texttt{biblatex} or enumerate environment or thebibliography environment etc. can be used to handle multiple different bibliographies in the document.
+% \include{pub}
+
+%*******************************************************************
+%                        Acknowledgements
+%*******************************************************************
+%%%
+\acknowledgments
+
+This section is for the acknowledgments. Please keep this brief and resist the temptation of writing flowery prose! Do include all those who helped you, e.g. other faculty/staff you consulted, colleagues who assisted etc.
+
+
+
+
+
+
+\signature{\today}
+% \include{ack}
+
+%*******************************************************************
+%                        About author
+%*******************************************************************
+% \colophon % remove this command while using this file.
+
+% GAME OVER
+%*******************************************************************
+\end{document}
+#+END_EXPORT
+
+* build                                                            :noexport:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-latex-classes
+	     '("phd"
+	       "\\documentclass[twoside]{iitbreport}"
+	       ("\\chapter{%s}" . "\\chapter*{%s}")
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(export commands here)
+#+END_SRC
