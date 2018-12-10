@@ -1,0 +1,106 @@
+#+startup: hideblocks
+#+startup: overview
+#+LaTeX_CLASS: jcp
+#+LaTeX_CLASS_OPTIONS: [aip, jmp, amsmath, amssymb, reprint]
+#+OPTIONS: author:nil date:nil title:nil toc:nil
+
+#+LaTeX_HEADER: \usepackage{booktabs}
+#+LaTeX_HEADER: \graphicspath{{expt/}}
+
+
+# Change the author name, title and other parts inside this latex block
+#+BEGIN_EXPORT latex
+%\preprint{AIP/123-QED}
+
+\title[Sample title]{Sample Title}% Force line breaks with \\
+\thanks{Footnote to title of article.}
+
+\author{A. Author}
+ \altaffiliation[Also at ]{Physics Department, XYZ University.}%Lines break automatically or can be forced with \\
+\author{B. Author}%
+ \email{Second.Author@institution.edu.}
+\affiliation{
+Authors' institution and/or address%\\This line break forced with \textbackslash\textbackslash
+}%
+
+\author{C. Author}
+ \homepage{http://www.Second.institution.edu/~Charlie.Author.}
+\affiliation{%
+Second institution and/or address%\\This line break forced% with \\
+}%
+
+\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\begin{abstract}
+An article usually includes an abstract, a concise summary of the work
+covered at length in the main body of the article. It is used for
+secondary publications and for information retrieval purposes.
+%
+Valid PACS numbers may be entered using the \verb+\pacs{#1}+ command.
+\end{abstract}
+
+\pacs{Valid PACS appear here}% PACS, the Physics and Astronomy
+                             % Classification Scheme.
+\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+\begin{quotation}
+The ``lead paragraph'' is encapsulated with the \LaTeX\
+\verb+quotation+ environment and is formatted as a single paragraph before the first section heading.
+(The \verb+quotation+ environment reverts to its usual meaning after the first sectioning command.)
+Note that numbered references are allowed in the lead paragraph.
+%
+The lead paragraph will only be found in an article being prepared for the journal \textit{Chaos}.
+\end{quotation}
+
+
+#+END_EXPORT
+
+* Overview of writing a paper in org mode
+
+** Subsection 1
+   A unnumbered list can be written as
+   - Movie
+   - Music
+   - Dialogue
+
+   To create a bullet point press =Alt <RET>=.
+
+** Subsection 2
+   A numbered list can be created as
+
+   1) Movie
+   2) Music
+   3) Dialogue
+
+   To create a bullet point press =Alt <RET>=.
+
+
+* Bibliography
+
+    bibliographystyle:unsrt
+    bibliography:~/Dropbox/Research/references.bib
+
+#+BEGIN_EXPORT latex
+% GAME OVER
+%*******************************************************************
+\end{document}
+#+END_EXPORT
+
+# ------------------------------------------------------
+# Don't edit lines after this.
+# ------------------------------------------------------
+* build                                                            :noexport:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-latex-classes
+	     '("jcp"
+	       "\\documentclass[twoside]{revtex4-1}"
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(export commands here)
+#+END_SRC

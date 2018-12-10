@@ -1,0 +1,121 @@
+#+startup: hideblocks
+#+startup: overview
+#+LaTeX_CLASS: elsarticle
+# #+LaTeX_CLASS_OPTIONS: [aip, jmp, amsmath, amssymb, reprint]
+#+OPTIONS: author:nil date:nil title:nil toc:nil
+
+#+LaTeX_HEADER: \usepackage{booktabs}
+#+LaTeX_HEADER: \usepackage{lineno,hyperref}
+#+LaTeX_HEADER: \modulolinenumbers[5]
+
+#+LaTeX_HEADER: \journal{Journal of \LaTeX\ Templates}
+
+
+# Change the author name, title and other parts inside this latex block
+#+BEGIN_EXPORT latex
+\begin{frontmatter}
+
+\title{Elsevier \LaTeX\ template\tnoteref{mytitlenote}}
+\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+
+%% Group authors per affiliation:
+\author{Elsevier\fnref{myfootnote}}
+\address{Radarweg 29, Amsterdam}
+\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+\ead[url]{www.elsevier.com}
+
+\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{support@elsevier.com}
+
+\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+\begin{abstract}
+This template helps you to create a properly formatted \LaTeX\ manuscript.
+\end{abstract}
+
+\begin{keyword}
+\texttt{elsarticle.cls}\sep \LaTeX\sep Elsevier \sep template
+\MSC[2010] 00-01\sep  99-00
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+#+END_EXPORT
+
+
+* The Elsevier article class
+
+\paragraph{Installation} If the document class \emph{elsarticle} is not
+available on your computer, you can download and install the system package
+\emph{texlive-publishers} (Linux) or install the \LaTeX\ package
+\emph{elsarticle} using the package manager of your \TeX\ installation, which is
+typically \TeX\ Live or Mik\TeX.
+
+\paragraph{Usage} Once the package is properly installed, you can use the
+document class \emph{elsarticle} to create a manuscript. Please make sure that
+your manuscript follows the guidelines in the Guide for Authors of the relevant
+journal. It is not necessary to typeset your manuscript in exactly the same way
+as an article, unless you are submitting to a camera-ready copy (CRC) journal.
+
+\paragraph{Functionality} The Elsevier article class is based on the standard
+article class and supports almost all of the functionality of that class. In
+addition, it features commands and options to format the
+
+- document style
+- baselineskip
+- front matter
+- keywords and MSC codes
+- theorems, definitions and proofs
+- lables of enumerations
+- citation style and labeling.
+
+
+* Front matter
+
+The author names and affiliations could be formatted in two ways:
+1) Group the authors per affiliation.
+2) Use footnotes to indicate the affiliations.
+See the front matter of this document for examples. You are recommended to
+conform your choice to the journal you are submitting to.
+
+
+* Bibliography styles
+
+There are various bibliography styles available. You can select the style of
+your choice in the preamble of this document. These styles are Elsevier styles
+based on standard styles like Harvard and Vancouver. Please use Bib\TeX\ to
+generate your bibliography and include DOIs whenever available.
+
+Here are two sample references: cite:Dirac1953888,Feynman1963118
+
+
+bibliographystyle:elsarticle-num
+bibliography:./mybibfile.bib
+
+#+BEGIN_EXPORT latex
+% GAME OVER
+%*******************************************************************
+\end{document}
+#+END_EXPORT
+
+# ------------------------------------------------------
+# Don't edit lines after this.
+# ------------------------------------------------------
+* build                                                            :noexport:
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-latex-classes
+	     '("elsarticle"
+	       "\\documentclass[review]{elsarticle}"
+	       ("\\section{%s}" . "\\section*{%s}")
+	       ("\\subsection{%s}" . "\\subsection*{%s}")
+	       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+(export commands here)
+#+END_SRC
